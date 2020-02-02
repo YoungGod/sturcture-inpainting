@@ -67,3 +67,10 @@ def pyramid_structure_loss(image, predicts, edge_alpha, grad_alpha):
 ![Attention](https://github.com/YoungGod/sturcture-inpainting/blob/master/project-images/attention.jpg)
 
 Our attention operation is inspired by the non-local mean mechanism which has been used for deionizing and super-resolution. It calculates the response at a position of the output feature map as a weighted sum of the features in the whole input feature map. And the weight or attention score is measured by the feature similarity. Through attention, similar features from surroundings can be transferred to the missing regions to refine the generated contents and structures (e.g. smoothing the artifacts and enhancing the details).
+
+# Some results
+
+# Real life object removal
+To evaluate the generalization ability of our inpainting models, we carry out object removal experiments in user scenarios. We develop a interactive image removal and completion tool with Opencv and based on two inpainting models which trained on datasets of CelebA and Places2 respectively. 
+
+To run the paint.py.
