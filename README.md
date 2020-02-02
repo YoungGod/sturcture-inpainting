@@ -23,6 +23,45 @@ The overview of our multi-task framework is as in figure below. It leverages the
 
 # Pyramid structure loss
 We propose a pyramid structure loss to guide the structure generation and embedding, thus incorporating the structure information into the generation process.
+```python
+def pyramid_structure_loss(image, predicts, edge_alpha, grad_alpha):
+    _, H, W, _ = image.get_shape().as_list()
+    loss = 0.
+    for predict in predicts:
+        _, h, w, _ = predict.get_shape().as_list()
+        if h != H:
+            gt_img = tf.image.resize_nearest_neighbor(image, size=(h, w))
+            
+            # grad
+            gt_grad = tf.image.sobel_edges(gt_img)
+            gt_grad = tf.reshape(gt_grad, [-1, h, w, 6])    # 6 channel
+            grad_error = tf.abs(predict - gt_grad)
+
+            # edge
+            gt_edge = tf.py_func(canny_edge, [gt_img], tf.float32, stateful=False)
+            edge_priority = priority_loss_mask(gt_edge, ksize=5, sigma=1, iteration=2)
+        else:
+            gt_img = image
+
+            # grad
+            gt_grad = tf.image.sobel_edges(gt_img)
+            gt_grad = tf.reshape(gt_grad, [-1, H, W, 6])  # 6 channel
+            grad_error = tf.abs(predict - gt_grad)
+
+            # edge
+            gt_edge = tf.py_func(canny_edge, [gt_img], tf.float32, stateful=False)
+            edge_priority = priority_loss_mask(gt_edge, ksize=5, sigma=1, iteration=2)
+
+        grad_loss = tf.reduce_mean(grad_alpha * grad_error)
+        edge_weight = edge_alpha * edge_priority
+        # print("edge_weight", edge_weight.shape)
+        # print("grad_error", grad_error.shape)
+        edge_loss = tf.reduce_sum(edge_weight * grad_error) / tf.reduce_sum(edge_weight) / 6.    # 6 channel
+
+        loss = loss + grad_loss + edge_loss
+
+    return loss
+```
 
 # Attention Layer
 ![Attention](https://github.com/YoungGod/sturcture-inpainting/blob/master/project-images/attention.jpg)
