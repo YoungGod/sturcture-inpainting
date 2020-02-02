@@ -8,4 +8,4 @@ This project develops a multi-task learning framework that attempts to incorpora
 
 ![image](https://github.com/YoungGod/sturcture-inpainting/blob/master/project-images/architecture.jpg)
 
-<img src="https://github.com/YoungGod/sturcture-inpainting/blob/master/project-images/architecture.jpg" style="zoom:50%">
+<img src="https://github.com/YoungGod/sturcture-inpainting/blob/master/project-images/architecture.jpg" style="zoom:50%" title=The overview of our multi-task framework. It leverages the structure knowledge with multi-tasking learning (simultaneous image and structure generation), structure embedding and attention mechanism.>
