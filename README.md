@@ -24,6 +24,7 @@ We propose a pyramid structure loss to guide the structure generation and embedd
 
 <div align=center> <img src="https://github.com/YoungGod/sturcture-inpainting/blob/master/project-images/sobel.jpg" width = 50% height = 50% />
 
+
 The loss function *pyramid_structure_loss(..)* is realized in *structure_loss.py*.
 ```python
 def pyramid_structure_loss(image, predicts, edge_alpha, grad_alpha):
