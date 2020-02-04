@@ -22,9 +22,9 @@ The overview of our multi-task framework is as in figure below. It leverages the
 # Pyramid structure loss
 We propose a pyramid structure loss to guide the structure generation and embedding, thus incorporating the structure information into the generation process. Here, the gradient and edge which are holded in sobel gradient maps as in figure below are used as the structure information.
 
-<div align=center> <img src="https://github.com/YoungGod/sturcture-inpainting/blob/master/project-images/sobel.jpg" width = 30% height = 30% />
+<div align=center/> <img src="https://github.com/YoungGod/sturcture-inpainting/blob/master/project-images/sobel.jpg" width = 40% height = 40% />
 
-<div align=right> The loss function *pyramid_structure_loss(..)* is realized in *structure_loss.py*.
+The loss function *pyramid_structure_loss(..)* is realized in *structure_loss.py*.
 ```python
 def pyramid_structure_loss(image, predicts, edge_alpha, grad_alpha):
     _, H, W, _ = image.get_shape().as_list()
