@@ -1,12 +1,6 @@
 # Learning to Incorporate Structure Knowledge for Image Inpainting
 Introductions and source code of AAAI 2020 paper *'Learning to Incorporate Structure Knowledge for Image Inpainting'*. You can get the paper in AAAI proceedings or [here](https://www.researchgate.net/publication/338984531_Learning_to_Incorporate_Structure_Knowledge_for_Image_Inpainting).
 
-Code will be coming soon..
-
-You can download the checkpoint of the inpainting model pretrained on Places2 training and validation data[checkpoint](https://pan.baidu.com/s/1SBbfR94KWG5UMm_FClmdMQ) with pass code *uiqn*
-
-
-
 ## Citation
 ```html
 @inproceedings{jie2020inpainting,
@@ -26,7 +20,10 @@ The overview of our multi-task framework is as in figure below. It leverages the
 ![architecture](https://github.com/YoungGod/sturcture-inpainting/blob/master/project-images/architecture.jpg)
 
 # Pyramid structure loss
-We propose a pyramid structure loss to guide the structure generation and embedding, thus incorporating the structure information into the generation process.
+We propose a pyramid structure loss to guide the structure generation and embedding, thus incorporating the structure information into the generation process. Here, the gradient and edge which are holded in sobel gradient maps as in figure below are used as the structure information.
+![sobel gradient](https://github.com/YoungGod/sturcture-inpainting/blob/master/project-images/sobel.jpg)
+
+The loss function *pyramid_structure_loss(..)* is realized in *structure_loss.py*.
 ```python
 def pyramid_structure_loss(image, predicts, edge_alpha, grad_alpha):
     _, H, W, _ = image.get_shape().as_list()
@@ -70,11 +67,19 @@ def pyramid_structure_loss(image, predicts, edge_alpha, grad_alpha):
 # Attention Layer
 ![Attention](https://github.com/YoungGod/sturcture-inpainting/blob/master/project-images/attention.jpg)
 
-Our attention operation is inspired by the non-local mean mechanism which has been used for deionizing and super-resolution. It calculates the response at a position of the output feature map as a weighted sum of the features in the whole input feature map. And the weight or attention score is measured by the feature similarity. Through attention, similar features from surroundings can be transferred to the missing regions to refine the generated contents and structures (e.g. smoothing the artifacts and enhancing the details).
+Our attention operation is inspired by the non-local mean mechanism which has been used for deionizing and super-resolution. It calculates the response at a position of the output feature map as a weighted sum of the features in the whole input feature map. And the weight or attention score is measured by the feature similarity. And when k=1, it works just like Self-Attention. Through attention, similar features from surroundings can be transferred to the missing regions to refine the generated contents and structures (e.g. smoothing the artifacts and enhancing the details).
 
-# Some results
+# Some qualitative results
+![qualitative](https://github.com/YoungGod/sturcture-inpainting/blob/master/project-images/quality-compare-celeba.jpg)
+![qualitative](https://github.com/YoungGod/sturcture-inpainting/blob/master/project-images/quality-compare-place.jpg)
 
 # Real life object removal
 To evaluate the generalization ability of our inpainting models, we carry out object removal experiments in user scenarios. We develop a interactive image removal and completion tool with Opencv and based on two inpainting models which trained on datasets of CelebA and Places2 respectively. 
 
 To run the paint.py.
+
+# Code
+## Painter
+Code will be coming soon..
+
+You can download the checkpoint of the inpainting model pretrained on Places2 training and validation data from [here](https://pan.baidu.com/s/1SBbfR94KWG5UMm_FClmdMQ) with pass code: *uiqn*.
