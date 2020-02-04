@@ -3,6 +3,10 @@ Introductions and source code of AAAI 2020 paper *'Learning to Incorporate Struc
 
 Code will be coming soon..
 
+You can download the checkpoint of the inpainting model pretrained on Places2 training and validation data[checkpoint](https://pan.baidu.com/s/1SBbfR94KWG5UMm_FClmdMQ) with pass code *uiqn*
+
+
+
 ## Citation
 ```html
 @inproceedings{jie2020inpainting,
