@@ -22,10 +22,9 @@ The overview of our multi-task framework is as in figure below. It leverages the
 # Pyramid structure loss
 We propose a pyramid structure loss to guide the structure generation and embedding, thus incorporating the structure information into the generation process. Here, the gradient and edge which are holded in sobel gradient maps as in figure below are used as the structure information.
 
-<div align=center> <img src="https://github.com/YoungGod/sturcture-inpainting/blob/master/project-images/sobel.jpg" width = 50% height = 50% />
+<div align=center> <img src="https://github.com/YoungGod/sturcture-inpainting/blob/master/project-images/sobel.jpg" width = 30% height = 30% />
 
-
-The loss function *pyramid_structure_loss(..)* is realized in *structure_loss.py*.
+<div align=right> The loss function *pyramid_structure_loss(..)* is realized in *structure_loss.py*.
 ```python
 def pyramid_structure_loss(image, predicts, edge_alpha, grad_alpha):
     _, H, W, _ = image.get_shape().as_list()
@@ -69,7 +68,7 @@ def pyramid_structure_loss(image, predicts, edge_alpha, grad_alpha):
 # Attention Layer
 Our attention operation is inspired by the non-local mean mechanism which has been used for deionizing and super-resolution. It calculates the response at a position of the output feature map as a weighted sum of the features in the whole input feature map. And the weight or attention score is measured by the feature similarity. And when k=1, it works just like Self-Attention. Through attention, similar features from surroundings can be transferred to the missing regions to refine the generated contents and structures (e.g. smoothing the artifacts and enhancing the details).
 
-![Attention](https://github.com/YoungGod/sturcture-inpainting/blob/master/project-images/attention.jpg)
+<div align=center/> <img src="https://github.com/YoungGod/sturcture-inpainting/blob/master/project-images/attention.jpg" width = 30% height = 30% />
 
 # Some qualitative results
 ## Qualitative
