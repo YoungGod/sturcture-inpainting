@@ -1,3 +1,0 @@
-# parameters
-PADDING: 'REFLECT'        # 'REFLECT' 'SAME'
-IMG_SHAPES: [256, 256, 3]
