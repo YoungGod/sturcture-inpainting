@@ -51,7 +51,6 @@ class InpaintModel():
             # Decoder
             # TODO: output scale 64  Down scale = 2 (origin) pool scale = 2 (origin)
             # share attention
-            #x = attention_with_neighbors(x, 4 * cnum, down_scale=2, pool_scale=2, name='attention_pooling_64')
             x = attention(x, 4 * cnum, down_scale=2, pool_scale=2, name='attention_pooling_64')
 
             # out of predict grad map
@@ -65,7 +64,6 @@ class InpaintModel():
 
             # TODO: output scale 128
             # share attention
-            #x = attention_with_neighbors(x, 2 * cnum, down_scale=2, pool_scale=2, name='attention_pooling_128')
             x = attention(x, 2 * cnum, down_scale=2, pool_scale=2, name='attention_pooling_128')
 
             # out of predict grad map
@@ -79,7 +77,6 @@ class InpaintModel():
 
             # TODO: output scale 256
             # share attention
-            #x = attention_with_neighbors(x, cnum, down_scale=2, pool_scale=2, name='attention_pooling_256')
             x = attention(x, cnum, down_scale=2, pool_scale=2, name='attention_pooling_256')
 
             # out of predict grad map
