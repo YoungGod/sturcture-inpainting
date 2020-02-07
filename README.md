@@ -7,7 +7,7 @@ Introductions and source code of AAAI 2020 paper *'Learning to Incorporate Struc
   title={Learning to Incorporate Structure Knowledge for Image Inpainting},
   author={Jie Yang, Zhiquan Qi, Yong Shi},
   booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
-  pages={3730--3738},
+  month={February},
   year={2020}
 }
 ```
@@ -111,7 +111,7 @@ Do object removal experiments, it will work like:
   title={Learning to Incorporate Structure Knowledge for Image Inpainting},
   author={Jie Yang, Zhiquan Qi, Yong Shi},
   booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
-  pages={3730--3738},
+  month={February},
   year={2020}
 }
 ```
