@@ -97,7 +97,7 @@ Our attention operation is inspired by the non-local mean mechanism which has be
 ## Painter
 To evaluate the generalization ability of our inpainting models, we carry out object removal experiments in user scenarios. We develop a interactive image removal and completion tool with Opencv. You may download the checkpoint of the inpainting model pretrained on Places2 training and validation data from **[here](https://pan.baidu.com/s/1SBbfR94KWG5UMm_FClmdMQ)** with pass code: **uiqn**.
 
-Run the paint.py in command line (We implement our model using tensorflow 1.5.2, python 3.7):
+Run the paint.py in command line (We implement our model using tensorflow 1.15.2, python 3.7):
 > python painter.py --checkpoint checkpoint/places2 --save_path imgs
 
 Do object removal experiments, it will work like:
