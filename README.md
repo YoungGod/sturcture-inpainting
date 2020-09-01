@@ -8,8 +8,8 @@ Introductions and source code of AAAI 2020 paper *'Learning to Incorporate Struc
   author={Jie Yang, Zhiquan Qi, Yong Shi},
   booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
   volume={34},
-	number={7},
-	pages={12605-12612},
+  number={7},
+  pages={12605-12612},
   year={2020}
 }
 ```
