@@ -1,5 +1,5 @@
 # Learning to Incorporate Structure Knowledge for Image Inpainting
-Introductions and source code of AAAI 2020 paper *'Learning to Incorporate Structure Knowledge for Image Inpainting'*. You can get the paper in AAAI proceedings or **[here](https://www.researchgate.net/publication/338984531_Learning_to_Incorporate_Structure_Knowledge_for_Image_Inpainting)**.
+Introductions and source code of AAAI 2020 paper *'Learning to Incorporate Structure Knowledge for Image Inpainting'*. You can get the paper in **[AAAI proceedings](https://aaai.org/ojs/index.php/AAAI/article/view/6951) or **[here](https://www.researchgate.net/publication/338984531_Learning_to_Incorporate_Structure_Knowledge_for_Image_Inpainting)**.
 
 ## Citation
 ```html
@@ -7,7 +7,9 @@ Introductions and source code of AAAI 2020 paper *'Learning to Incorporate Struc
   title={Learning to Incorporate Structure Knowledge for Image Inpainting},
   author={Jie Yang, Zhiquan Qi, Yong Shi},
   booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
-  month={February},
+  volume={34},
+	number={7},
+	pages={12605-12612},
   year={2020}
 }
 ```
@@ -95,7 +97,7 @@ Our attention operation is inspired by the non-local mean mechanism which has be
 ## Painter
 To evaluate the generalization ability of our inpainting models, we carry out object removal experiments in user scenarios. We develop a interactive image removal and completion tool with Opencv. You may download the checkpoint of the inpainting model pretrained on Places2 training and validation data from **[here](https://pan.baidu.com/s/1SBbfR94KWG5UMm_FClmdMQ)** with pass code: **uiqn**.
 
-Run the paint.py in command line:
+Run the paint.py in command line (We implement our model using tensorflow 1.5.2):
 > python painter.py --checkpoint checkpoint/places2 --save_path imgs
 
 Do object removal experiments, it will work like:
@@ -111,7 +113,9 @@ Do object removal experiments, it will work like:
   title={Learning to Incorporate Structure Knowledge for Image Inpainting},
   author={Jie Yang, Zhiquan Qi, Yong Shi},
   booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
-  month={February},
+  volume={34},
+	number={7},
+	pages={12605-12612},
   year={2020}
 }
 ```
