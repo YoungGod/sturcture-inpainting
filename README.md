@@ -119,3 +119,5 @@ Do object removal experiments, it will work like:
   year={2020}
 }
 ```
+## License
+CC 4.0 Attribution-NonCommercial International. The software is for educaitonal and academic research purpose only.
