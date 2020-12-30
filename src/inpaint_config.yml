@@ -1,0 +1,126 @@
+# parameters
+CUSTOM_DATASET: True
+MASK_MODE: 'irregular'     # 'irregular'
+DATASET: 'places2'    # 'places2',  'celeba_align'
+VGG_DIR: 'imagenet-vgg-verydeep-19.mat'
+
+RANDOM_CROP: False
+
+LOG_DIR: logs
+CHECKPOINT_DIR: checkpoint
+MODEL_DIR: ''
+SAMPLE_DIR: sample
+RESULT_DIR: result
+MODEL_RESTORE: 'places2'    # 'places2' 'celeba_align', if train from scratch set ''
+
+
+# parameters in other related papers
+# 1. Pconv: Ltotal = Lvalid+6Lhole+0.05Lperceptual+120(Lstyleout+Lstylecomp)+0.1Ltv (pool1, pool2, pool3)
+# 2. EdgeConnect: l1 = 1, Ladv = 0.1, Lperceptual=0.1, Lstyle=250 (relu_1,...relu_5)
+# 3. SC-FEGAN: l1 = 1, Ladv=0.001, Lperceptual=0.05, Lstyle=120, Ltv=0.1 (pool1, pool2, pool3)
+
+# l1 loss
+L1_FORE_ALPHA: 1.   # may weight more, such as 1.5
+L1_BACK_ALPHA: 1.
+
+L1_SCALE: 0.        # for down scaled image's l1 loss, (Don't used in default. Only regularize on the structures.)
+                    # we found that l1 for pixel and gradients are contradicted in some extent
+
+# content, style loss
+BACKGROUND_LOSS: True      # for content and style loss
+CONTENT_FORE_ALPHA: 0.1    # layers see in loss.py
+CONTENT_BACK_ALPHA: 0.1
+STYLE_FORE_ALPHA: 250.     # layers see in loss.py
+STYLE_BACK_ALPHA: 250.
+
+# tv loss
+TV_ALPHA: 0.
+
+
+# gan loss
+GAN_TYPE: 'patch_gan'     # 'wgan_gp'
+GAN_LOSS_TYPE: 'hinge'    # 'hinge', 'gan'
+SN: True
+PATCH_GAN_ALPHA: 0.4      # weight: best tuned in range [0.1, 0.8]
+GP_ALPHA: 0.
+
+# edge, grad loss
+SIGMA: 1.5                # edge info
+ALPHA: 1.                 # weight auxiliary Edge task, taking weight values corresponding to main task
+EDGE_ALPHA: 20.           # edge weight = EDGE_ALPHA * priority; priority in (0, 1)
+# grad reconstruction
+GRAD_ALPHA: 0.1           # grad weight
+
+
+# other loss (Don't use in default)
+# grad matching
+GRAD_MATCHING_ALPHA: 0.0
+PATCH_SIZE: 5
+STRIDE_SIZE: 3
+# image matching
+IMG_MATCHING_ALPHA: 0.
+
+
+# training
+RANDOM_SEED: False
+PADDING: 'REFLECT'        # 'REFLECT' 'SAME'
+
+G_LR: 0.00001
+D_LR: 0.00001
+
+BATCH_SIZE: 4            # batch size
+
+NUM_GPUS: 1              # number of gpus, support multi-gpu setting
+GPU_ID: [1]              # list of gpu ids [..]
+
+EPOCH: 10                # training epochs
+PRINT_FREQ: 50           # print training info in steps
+SAVE_FREQ: 2000          # saving checkpoint (in steps)
+LOG_FREQ: 2000           # logs, viewed in tensorboard (in steps)
+VIZ_MAX_OUT: 8           # middle results, viewed in tensorboard
+
+# validation and test
+VAL: False
+VAL_NUM: 8
+STATIC_VIEW: True
+VAL_FREQ: 8000
+
+TEST_NUM: 6
+MAX_TEST_NUM: 1000    #
+
+# image data dir
+DATA_FLIST:
+  # https://github.com/JiahuiYu/progressive_growing_of_gans_tf
+  celeba_align: [
+    'data/celeba_align/train_shuffled.flist',
+    'data/celeba_align/validation_shuffled.flist'
+  ]
+  # http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html, please to use RANDOM_CROP: True
+  celeba_hq_sample: [
+    'data/celeba_hq_sample/train_shuffled.flist',
+    'data/celeba_hq_sample/validation_shuffled.flist'
+  ]
+  # http://places2.csail.mit.edu/, please download the high-resolution dataset and use RANDOM_CROP: True
+  places2: [
+    'data/places2/train_shuffled.flist',
+    'data/places2/validation_shuffled.flist'
+  ]
+  facade: [
+    'data/facade/train_shuffled.flist',
+    'data/facade/validation_shuffled.flist'
+  ]
+  dtd: [
+    'data/facade/train_shuffled.flist',
+    'data/facade/validation_shuffled.flist'
+  ]
+
+
+# irregular mask data dir
+TRAIN_MASK_FLIST: data/mask-auto/img_mask_train.flist
+VAL_MASK_FLIST: data/mask-auto/img_mask_val.flist
+TEST_MASK_FLIST: data/mask-auto/img_mask_test.flist
+
+# regular mask
+IMG_SHAPES: [256, 256, 3]
+HEIGHT: 128
+WIDTH: 128
