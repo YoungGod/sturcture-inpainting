@@ -1,5 +1,5 @@
 # Source code
-This the early version of source code for developing our inpainting model.
+Here is the early version of source code for developing our inpainting model.
 
 Some of the files are too large to upload. We strongly recommend to download the src from [google drive](https://drive.google.com/file/d/1mh5t17vaR1GcL44iMyavqRDMbTmo665Z/view?usp=sharing)
 or [baidu](https://pan.baidu.com/s/1eXc2elmsY2t__mJRKI_l2g) with password: w5r4.
